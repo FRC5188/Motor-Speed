@@ -32,6 +32,9 @@ public class Pats_PID_Controller implements Runnable, PID_Controller{
 	public void set(double set){
 		setPoint = set;
 	}
+	public double getSet(){
+		return setPoint;
+	}
 	public void resetAccumulator(){
 		accumulator = 0;
 	}

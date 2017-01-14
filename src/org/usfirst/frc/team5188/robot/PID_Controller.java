@@ -13,4 +13,5 @@ public interface PID_Controller {
 	public void setSensor(PID_Sensor sensor);
 	public void setActuator(PID_Actuator actuator);
 	public boolean isRunning();
+	public double getSet();	//returns setpoint
 }

@@ -37,7 +37,9 @@ public class Shooter implements PID_Actuator, PID_Sensor {
 		}
 		talon.disable();
 	}
-	
+	public double getSetPoint(){
+		return controller.getSet();
+	}
 	public double read() {
 		return encoder.getRate();
 	} 
