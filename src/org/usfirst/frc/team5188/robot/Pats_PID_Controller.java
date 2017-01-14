@@ -7,7 +7,7 @@ public class Pats_PID_Controller implements Runnable, PID_Controller{
 	private double setPoint;
 	private double accumulator = 0;
 	private double lastError;
-	public int loopTime;	//in milliseconds
+	public double loopTime;	//in milliseconds
 	private long lastRun = System.currentTimeMillis();
 	Thread t = new Thread(this);
 	boolean running = false;
