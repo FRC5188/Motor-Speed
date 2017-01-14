@@ -19,7 +19,7 @@ public class SuperJoystickPlus extends Joystick {
 	    }
 	    
 	    public double get(CTRL_AXIS ax) {//Last called deadband
-	    	double x = this.getRawAxis(ax.value);
+	    	double x = getRawAxis(ax.value);
 	    	return Math.abs(x) < 0.1 ? 0 : x;
 	    }
 	    

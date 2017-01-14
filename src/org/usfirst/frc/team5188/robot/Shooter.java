@@ -47,3 +47,4 @@ public class Shooter implements PID_Actuator, PID_Sensor {
 		talon.set(value);
 	}
 }
+
