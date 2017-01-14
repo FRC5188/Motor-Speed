@@ -8,6 +8,7 @@ public class Pats_PID_Controller implements Runnable, PID_Controller{
 	private double accumulator = 0;
 	private double lastError;
 	public double loopTime;	//in milliseconds
+	public double error;
 	private long lastRun = System.currentTimeMillis();
 	Thread t = new Thread(this);
 	boolean running = false;
@@ -50,7 +51,7 @@ public class Pats_PID_Controller implements Runnable, PID_Controller{
 	}
 	public void stop(){running = false;}
 	public void runIteration(){
-		double error = invert ? setPoint - sensor.read() : sensor.read() - setPoint;
+		error = invert ? setPoint - sensor.read() : sensor.read() - setPoint;
 		double p_result = p * error;
 		accumulator += error;
 		double i_result = i * accumulator;

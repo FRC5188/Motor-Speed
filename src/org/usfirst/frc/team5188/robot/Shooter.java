@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.CANTalon;
 public class Shooter implements PID_Actuator, PID_Sensor {
 	private CANTalon talon;
 	public Pats_PID_Controller controller;
+	public double lastSet;
 	
 	Shooter(int motor_pin, double p, double i, double d, int loopTime, boolean inverted){
 		talon = new CANTalon(1);
@@ -43,6 +44,7 @@ public class Shooter implements PID_Actuator, PID_Sensor {
 	public void set(double value) {
 //		System.out.println("Setting motor to: " + value);
 		talon.set(value);
+		lastSet = value;
 	}
 	public void setRPM(double d){
 		this.setPIDSpeed(d * (512/75));	//(x rev/m)(1024*4 ticks/1rev)(1m/60s)(1s/10t) = 512x ticks/75 t

@@ -76,7 +76,7 @@ public class Robot extends IterativeRobot {
 //        	shooter.start_pid();
         	while(!controller.isButtonPushed(CTRL_BTN.B)){
         		counter ++;
-        		if((counter % 1000) == 0){System.out.println("IN PID LOOP: " + " Throttle: " + controller.get(CTRL_AXIS.LY) + " Speed: " + shooter.read() + " Set Point: " + shooter.getSetPoint());}
+        		if((counter % 1000) == 0){System.out.println("IN PID LOOP: " + " Speed: " + shooter.read() + " Set Point: " + shooter.getSetPoint() + " Error: " + shooter.controller.error + " Motor Throttle: " + shooter.lastSet);}
         		shooter.setRPM(controller.get(CTRL_AXIS.LY) * 1000);
         		shooter.controller.runIteration();
 //        		System.out.println("Throttle: " + controller.get(CTRL_AXIS.LY) + " Speed: " + shooter.read() + " Set Point: " + shooter.getSetPoint());
