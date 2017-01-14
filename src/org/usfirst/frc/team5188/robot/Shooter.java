@@ -46,8 +46,8 @@ public class Shooter implements PID_Actuator, PID_Sensor {
 	public void set(double value) {
 		talon.set(value);
 	}
-	public void setRPM(int rpm){
-		this.setPIDSpeed(rpm * (512/75));	//(x rev/m)(1024*4 ticks/1rev)(1m/60s)(1s/10t) = 512x ticks/75 t
+	public void setRPM(double d){
+		this.setPIDSpeed(d * (512/75));	//(x rev/m)(1024*4 ticks/1rev)(1m/60s)(1s/10t) = 512x ticks/75 t
 	}
 }
 

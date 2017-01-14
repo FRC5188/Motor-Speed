@@ -72,9 +72,12 @@ public class Robot extends IterativeRobot {
         shooter.setThrottle(controller.get(CTRL_AXIS.LY));
         System.out.println("Throttle: " + controller.get(CTRL_AXIS.LY) + " Speed: " + shooter.read() + " Set Point: " + shooter.getSetPoint());
         if(controller.isButtonPushed(CTRL_BTN.A)){
+        	int counter = 0;
         	while(!controller.isButtonPushed(CTRL_BTN.B)){
-        		shooter.setPIDSpeed(controller.get(CTRL_AXIS.LY) * 1000);
-        		System.out.println("Throttle: " + controller.get(CTRL_AXIS.LY) + " Speed: " + shooter.read() + " Set Point: " + shooter.getSetPoint());
+        		counter ++;
+        		if((counter % 1000) == 0){System.out.println("Throttle: " + controller.get(CTRL_AXIS.LY) + " Speed: " + shooter.read() + " Set Point: " + shooter.getSetPoint());}
+        		shooter.setRPM(controller.get(CTRL_AXIS.LY) * 1000);
+//        		System.out.println("Throttle: " + controller.get(CTRL_AXIS.LY) + " Speed: " + shooter.read() + " Set Point: " + shooter.getSetPoint());
         	}
         	shooter.stop();
         }
