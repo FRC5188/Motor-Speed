@@ -3,9 +3,6 @@ package org.usfirst.frc.team5188.robot;
 import java.util.regex.PatternSyntaxException;
 
 import edu.wpi.first.wpilibj.CANTalon;
-import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj.Talon;
-import edu.wpi.first.wpilibj.TalonSRX;
 
 public class Shooter implements PID_Actuator, PID_Sensor {
 	private CANTalon talon;
@@ -35,7 +32,7 @@ public class Shooter implements PID_Actuator, PID_Sensor {
 		if(controller.isRunning()){
 			controller.stop();
 		}
-		talon.disable();
+//		talon.disable();
 	}
 	public double getSetPoint(){
 		return controller.getSet();
