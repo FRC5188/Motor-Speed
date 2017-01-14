@@ -12,15 +12,20 @@ import edu.wpi.first.wpilibj.Joystick;
 public class SuperJoystickPlus extends Joystick {
 	
 	private boolean flags[] = new boolean[CTRL_BTN.TOTAL_BUTTONS.value + 1];
+	private double deadzone = .1;
 	   
 	    SuperJoystickPlus(int port){
 	        super(port); //also need to clear joy-stick class
 	        clearButtons();
 	    }
 	    
+	    public void setDeadzone(double deadzone){
+	    	this.deadzone = deadzone;
+	    }
+	    
 	    public double get(CTRL_AXIS ax) {//Last called deadband
 	    	double x = getRawAxis(ax.value);
-	    	return Math.abs(x) < 0.1 ? 0 : x;
+	    	return Math.abs(x) < deadzone ? 0 : x;
 	    }
 	    
 	     public boolean isButtonPushed(CTRL_BTN button){
