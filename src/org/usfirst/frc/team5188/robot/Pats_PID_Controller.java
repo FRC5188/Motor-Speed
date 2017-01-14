@@ -17,7 +17,7 @@ public class Pats_PID_Controller implements Runnable, PID_Controller{
 	private boolean invert = false;
 	private boolean isRunning = false;
 	public Pats_PID_Controller(){}
-	public Pats_PID_Controller(double p, double i, double d, int loopTime, PID_Sensor sensor, PID_Actuator actuator){
+	public Pats_PID_Controller(double p, double i, double d, double loopTime, PID_Sensor sensor, PID_Actuator actuator){
 		this.p = p;
 		this.i = i;
 		this.d = d;

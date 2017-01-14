@@ -21,6 +21,7 @@ public class Robot extends IterativeRobot {
 	
     SuperJoystickPlus controller;
     Shooter shooter;
+    int counter = 0;
     
     /**
      * This function is run when the robot is first started up and should be
@@ -70,9 +71,10 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         shooter.setThrottle(controller.get(CTRL_AXIS.LY));
-        System.out.println("Throttle: " + controller.get(CTRL_AXIS.LY) + " Speed: " + shooter.read() + " Set Point: " + shooter.getSetPoint());
+        counter ++;
+		if((counter % 1000) == 0){System.out.println("IN PID LOOP: " + " Speed: " + shooter.read() + " Set Point: " + shooter.getSetPoint() + " Error: " + shooter.controller.error + " Motor Throttle: " + shooter.lastSet);}
         if(controller.isButtonPushed(CTRL_BTN.A)){
-        	int counter = 0;
+//        	int counter = 0;
 //        	shooter.start_pid();
         	while(!controller.isButtonPushed(CTRL_BTN.B)){
         		counter ++;
