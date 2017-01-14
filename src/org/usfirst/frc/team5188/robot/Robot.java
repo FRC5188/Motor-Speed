@@ -19,6 +19,9 @@ public class Robot extends IterativeRobot {
     String autoSelected;
     SendableChooser chooser;
 	
+    SuperJoystickPlus controller;
+    Shooter shooter;
+    
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
@@ -28,6 +31,8 @@ public class Robot extends IterativeRobot {
         chooser.addDefault("Default Auto", defaultAuto);
         chooser.addObject("My Auto", customAuto);
         SmartDashboard.putData("Auto choices", chooser);
+        controller = new SuperJoystickPlus(0);
+        shooter = new Shooter(0, 0, 1, .1, .1, .1, 20, false);
     }
     
 	/**
@@ -64,7 +69,7 @@ public class Robot extends IterativeRobot {
      * This function is called periodically during operator control
      */
     public void teleopPeriodic() {
-        
+        shooter.setThrottle(controller.get(CTRL_AXIS.LY));
     }
     
     /**
