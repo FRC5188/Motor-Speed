@@ -49,7 +49,7 @@ public class Pats_PID_Controller implements Runnable, PID_Controller{
 		t.start();
 	}
 	public void stop(){running = false;}
-	private void runIteration(){
+	public void runIteration(){
 		double error = invert ? setPoint - sensor.read() : sensor.read() - setPoint;
 		double p_result = p * error;
 		accumulator += error;
