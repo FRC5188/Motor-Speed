@@ -41,6 +41,7 @@ public class Shooter implements PID_Actuator, PID_Sensor {
 		return talon.getSpeed();	//in ticks per 100ms = time unit = t
 	} 
 	public void set(double value) {
+		System.out.println("Setting motor to: " + value);
 		talon.set(value);
 	}
 	public void setRPM(double d){
