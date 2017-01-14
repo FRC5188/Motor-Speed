@@ -45,6 +45,7 @@ public class Pats_PID_Controller implements Runnable, PID_Controller{
 	public void invert(boolean inversionState){invert = inversionState;}
 	public void start(){
 		running = true;
+		this.resetAccumulator();
 		t.start();
 	}
 	public void stop(){running = false;}

@@ -22,7 +22,7 @@ public class Shooter implements PID_Actuator, PID_Sensor {
 		controller.stop();
 		talon.disable();
 	}
-	public void setSpeed(double speed){
+	public void setPIDSpeed(double speed){
 		controller.set(speed);
 	}
 	public void setThrottle(double speed){
