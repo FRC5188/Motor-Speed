@@ -32,7 +32,7 @@ public class Robot extends IterativeRobot {
         chooser.addObject("My Auto", customAuto);
         SmartDashboard.putData("Auto choices", chooser);
         controller = new SuperJoystickPlus(0);
-        shooter = new Shooter(0, 0, 1, .1, .1, .1, 20, false);
+        shooter = new Shooter(0, .1, .1, .1, 20, false);
     }
     
 	/**
@@ -71,6 +71,7 @@ public class Robot extends IterativeRobot {
     public void teleopPeriodic() {
         shooter.setThrottle(controller.get(CTRL_AXIS.LY));
         System.out.println("Throttle: " + controller.get(CTRL_AXIS.LY) + " Speed: " + shooter.read() + " Set Point: " + shooter.getSetPoint());
+        
     }
     
     /**
