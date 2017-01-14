@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.CANTalon;
 
 public class Shooter implements PID_Actuator, PID_Sensor {
 	private CANTalon talon;
-	private Pats_PID_Controller controller;
+	public Pats_PID_Controller controller;
 	
 	Shooter(int motor_pin, double p, double i, double d, int loopTime, boolean inverted){
 		talon = new CANTalon(1);
