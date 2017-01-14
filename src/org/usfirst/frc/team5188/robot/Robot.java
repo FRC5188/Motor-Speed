@@ -33,7 +33,7 @@ public class Robot extends IterativeRobot {
         chooser.addObject("My Auto", customAuto);
         SmartDashboard.putData("Auto choices", chooser);
         controller = new SuperJoystickPlus(0);
-        shooter = new Shooter(0, .0001, 0, 0, 20, true);
+        shooter = new Shooter(0, .0002, 0, 0, 20, true);
         controller.setDeadzone(.01);
     }
     
@@ -73,7 +73,7 @@ public class Robot extends IterativeRobot {
     public void teleopPeriodic() {
         shooter.setThrottle(controller.get(CTRL_AXIS.LY));
         counter ++;
-		if((counter % 1000) == 0){System.out.println("IN PID LOOP: " + " Speed: " + shooter.read() + " Set Point: " + shooter.getSetPoint() + " Error: " + shooter.controller.error + " Motor Throttle: " + shooter.lastSet);}
+		System.out.println("IN PID LOOP: " + " Speed: " + shooter.read() + " Set Point: " + shooter.getSetPoint() + " Error: " + shooter.controller.error + " Motor Throttle: " + shooter.lastSet);
         if(controller.isButtonPushed(CTRL_BTN.A)){
 //        	int counter = 0;
 //        	shooter.start_pid();

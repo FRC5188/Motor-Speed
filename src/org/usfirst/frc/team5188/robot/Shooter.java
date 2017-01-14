@@ -12,6 +12,7 @@ public class Shooter implements PID_Actuator, PID_Sensor {
 	Shooter(int motor_pin, double p, double i, double d, double loopTime, boolean inverted){
 		talon = new CANTalon(1);
 		controller = new Pats_PID_Controller(p, i, d, loopTime, this, this);
+		controller.invert(inverted);
 	}
 	public void start_pid(){
 		controller.start();
