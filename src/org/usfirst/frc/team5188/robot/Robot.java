@@ -33,7 +33,7 @@ public class Robot extends IterativeRobot {
         chooser.addObject("My Auto", customAuto);
         SmartDashboard.putData("Auto choices", chooser);
         controller = new SuperJoystickPlus(0);
-        shooter = new Shooter(0, .0002, 0, 0, 20, true);
+        shooter = new Shooter(0, .00007, 0.0000003, -0.00000001, 20, true);
         controller.setDeadzone(.01);
     }
     
