@@ -47,7 +47,8 @@ public class Pats_PID_Controller implements Runnable, PID_Controller{
 	public void start(){
 		running = true;
 		this.resetAccumulator();
-		t = new Thread(this).start();
+		t = new Thread(this);
+		t.start();
 	}
 	public void stop(){running = false;}
 	public void runIteration(){
