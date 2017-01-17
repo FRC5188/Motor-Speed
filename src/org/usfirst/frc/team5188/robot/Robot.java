@@ -1,4 +1,3 @@
-
 package org.usfirst.frc.team5188.robot;
 
 import java.util.Arrays;
@@ -8,6 +7,8 @@ import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.Sendable;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import modules.*;
+
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the IterativeRobot
@@ -43,7 +44,7 @@ public class Robot extends IterativeRobot {
         
         SmartDashboard.putData("Auto choices", chooser);
         controller = new SuperJoystickPlus(0);
-        shooter = new Shooter(0, .00006, 0.000008, -0.000000001, 10, true);
+        shooter = new Shooter(0, true, new Pats_PID_Controller());
         controller.setDeadzone(.01);
     }
     
@@ -83,14 +84,14 @@ public class Robot extends IterativeRobot {
     public void teleopPeriodic() {
         shooter.setThrottle(controller.get(CTRL_AXIS.LY));
         counter ++;
-		System.out.println(" Speed: " + shooter.read() + " Set Point: " + shooter.getSetPoint() + " Error: " + shooter.controller.error + " Motor Throttle: " + shooter.lastSet);
+		System.out.println(" Speed: " + shooter.read() + " Set Point: " + shooter.getSetPoint() + " Error: " + shooter.controller.getError() + " Motor Throttle: " + shooter.lastSet);
         if(controller.isButtonPushed(CTRL_BTN.A)){
 //        	int counter = 0;
         	shooter.start_pid();
         	while(!controller.isButtonPushed(CTRL_BTN.B)){
         		counter ++;
         		if((counter % 10000) == 0){
-        			System.out.println("IN PID LOOP: " + "Throttle: " + controller.get(CTRL_AXIS.LY) + " Speed: " + shooter.read() + " Set Point: " + shooter.getSetPoint() + " Error: " + shooter.controller.error + " Motor Throttle: " + shooter.lastSet + "PIDs are: " + Arrays.toString(shooter.controller.getPIDS()));
+        			System.out.println("IN PID LOOP: " + "Throttle: " + controller.get(CTRL_AXIS.LY) + " Speed: " + shooter.read() + " Set Point: " + shooter.getSetPoint() + " Error: " + shooter.controller.getError() + " Motor Throttle: " + shooter.lastSet + "PIDs are: " + Arrays.toString(shooter.controller.getPIDS()));
         		}
         		shooter.setRPM(2675);
         		pref = Preferences.getInstance();

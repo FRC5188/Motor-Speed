@@ -1,18 +1,21 @@
 package org.usfirst.frc.team5188.robot;
 
-import java.util.regex.PatternSyntaxException;
-
 import edu.wpi.first.wpilibj.CANTalon;
+import modules.*;
 
 public class Shooter implements PID_Actuator, PID_Sensor {
 	private CANTalon talon;
-	public Pats_PID_Controller controller;
+//	public Pats_PID_Controller controller;
+	public PID_Controller controller;
 	public double lastSet;
 	
-	Shooter(int motor_pin, double p, double i, double d, double loopTime, boolean inverted){
+	Shooter(int motor_pin, boolean inverted, PID_Controller controller){
 		talon = new CANTalon(1);
-		controller = new Pats_PID_Controller(p, i, d, loopTime, this, this);
+		this.controller = controller;
+//		controller = new Pats_PID_Controller(p, i, d, loopTime, this, this);
 		controller.invert(inverted);
+        controller.setPIDS(.00006, 0.000008, -0.000000001);
+        controller.setLoopTime(10);
 	}
 	public void start_pid(){
 		controller.start();
